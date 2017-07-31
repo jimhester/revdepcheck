@@ -179,12 +179,12 @@ report_revdeps <- function(pkg = ".") {
   }
 
   probs <- map_lgl(packages, problems)
-  pkgname <- map_chr(packages, function(x) x$new$package)
+  pkgname <- map_chr(packages, function(x) x$package)
 
   data.frame(
     problems = probs,
     package = ifelse(probs, problem_link(pkgname), pkgname),
-    version = map_chr(packages, function(x) x$new$version),
+    version = map_chr(packages, function(x) x$version),
     error = map_chr(packages, make_summary, "error"),
     warning = map_chr(packages, make_summary, "warning"),
     note = map_chr(packages, make_summary, "note"),
